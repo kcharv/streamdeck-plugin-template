@@ -15,33 +15,10 @@
 		<div class="sdpi-wrapper">
 			<form id="property-inspector">
 				<div class="sdpi-item">
-					<div data-localize class="sdpi-item-label">Name</div>
-					<input class="sdpi-item-value" name="name" type="text" value="" />
+					<div data-localize class="sdpi-item-label">Game Length</div>
+					<input class="sdpi-item-value" onchange="changed()" name="duration" type="text" value="00:00:30" required pattern="[0-9]{2}:[0-9]{2}:[0-9]{2}" />
 				</div>
 
-				<div type="textarea" class="sdpi-item">
-					<div class="sdpi-item-label up20" data-localize>Message</div>
-					<div class="sdpi-item-value textarea">
-						<textarea
-							name="message"
-							type="textarea"
-							maxlength="50"
-							class="three-lines"
-						></textarea>
-					</div>
-				</div>
-
-				<div class="sdpi-item">
-					<div class="sdpi-item-label" data-localize>Button</div>
-					<button
-						class="sdpi-item-value"
-						value="Click Me"
-						data-localize
-						id="open-external"
-					>
-						Click Me
-					</button>
-				</div>
 			</form>
 		</div>
 

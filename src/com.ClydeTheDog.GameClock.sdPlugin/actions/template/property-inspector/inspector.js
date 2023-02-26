@@ -20,17 +20,6 @@ $PI.onConnected((jsn) => {
 	);
 });
 
-/**
- * Provide window level functions to use in the external window
- * (this can be removed if the external window is not used)
- */
-window.sendToInspector = (data) => {
-	console.log(data);
-};
-
-document.querySelector('#open-external').addEventListener('click', () => {
-	window.open('../../../external.html');
-});
 
 const localize = (s) => {
     if(typeof s === 'undefined') return '';
@@ -58,3 +47,16 @@ const localizeUI = () => {
 $PI.on('localizationLoaded', (jsn) => {
     localizeUI();
 });
+
+
+const changed = () => {
+    console.log('changed', event, event.target, event.target.value);
+    // the value of the input field is saved to settings
+    $PI.setSettings({[event.target.id]: event.target.value});
+    // the value of the input field is also sent to the plugin
+    // which is not needed, because the plugin already received
+    // the value via the 'setSettings' call
+    // This is mostly used to send values to the plugin 
+    // that are not saved in the settings
+    $PI.sendToPlugin({key: event.target.name, value: event.target.value});
+};
